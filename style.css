@@ -1,0 +1,76 @@
+/* variables */
+:root {
+  --blue-gradient: linear-gradient(to right, rgb(63, 81, 181), rgb(100, 181, 246)) rgb(255, 255, 255) !important;
+  --regular-weight: 400;
+  --bold-weight: 700;
+  --regular-size: 14px;
+}
+/*----------------css reset--------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+/* ----------------------------------- */
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+/* heder */
+header {
+  display: flex;
+}
+
+.header__banner {
+  display: flex;
+  justify-content: center;
+  background-color: aqua;
+  width: 100%;
+}
+.header__banner__link {
+  padding: 6px 16px;
+}
