@@ -8,16 +8,67 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
       <div class="header__banner">
-        <a href="#" class="header__banner__link">Buy, sell, & swap your favorite assets. No KYC. No added fees. Decentralized.</a>
+        <a href="#" class="header__banner__link"
+          ><img src="imgs/ss-mark-white.svg" alt="" />Buy, sell, & swap your favorite assets. No KYC. No added fees. Decentralized.
+          <img src="imgs/arrow-right.svg" alt="arrow"
+        /></a>
       </div>
       <nav>
-        <div class="nav__list"></div>
+        <div class="nav__list">
+          <div class="nav-left">
+            <a href="#" class="nav-item">Coins</a>
+            <a href="#" class="nav-item">Exchanges</a>
+            <a href="#" class="nav-item">Contact Us</a>
+          </div>
+          <div class="nav-logo nav-item">
+            <img src="imgs/black.svg" alt="" width="80" />
+          </div>
+          <div class="nav-right">
+            <div class="nav-dropdown currency unit nav-item">KHR</div>
+            <div class="nav-dropdown languages nav-item">English</div>
+            <div class="nav-search-input nav-item"><i class="ri-search-line"></i></div>
+            <div class="nav-setting nav-item"><i class="ri-settings-4-fill"></i></div>
+          </div>
+        </div>
       </nav>
     </header>
+    <main>
+      <div class="blue-part"></div>
+      <div class="data-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Market Cap</th>
+              <th>VWAP(24Hr)</th>
+              <th>Supply</th>
+              <th>Volume(24Hr)</th>
+              <th>Change(24Hr)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Bitcoin</td>
+              <td>1000000</td>
+              <td>4530000</td>
+              <td>20000000</td>
+              <td>20000000</td>
+              <td>20000000</td>
+              <td>30%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <script src="main.js"></script>
   </body>
 </html>
