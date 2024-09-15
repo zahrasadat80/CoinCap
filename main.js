@@ -43,6 +43,10 @@ function formatNumber(price) {
   return number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 }
 
+function toPercentage(number) {
+  return number.toFixed(2) + '%';
+}
+
 //step three assign each property to a var
 function renderRows(asset) {
   const tableRow = document.createElement('tr');
@@ -51,8 +55,17 @@ function renderRows(asset) {
   let rankCell = makeTableCell(rank);
   tableRow.appendChild(rankCell);
 
+  let symbol = asset.symbol;
   let name = asset.name;
-  let nameCell = makeTableCell(name);
+  const nameCell = document.createElement('td');
+  const nameWrapper = document.createElement('div');
+  const nameText = document.createTextNode(name); //I learned new thing
+  renderCryptoImg(nameWrapper, symbol);
+  nameWrapper.style.display = 'flex';
+  nameWrapper.style.alignItems = 'center';
+  nameWrapper.style.gap = '10px';
+  nameWrapper.appendChild(nameText);
+  nameCell.appendChild(nameWrapper);
   tableRow.appendChild(nameCell);
 
   let price = asset.priceUsd;
@@ -81,13 +94,20 @@ function renderRows(asset) {
   let volumeCell = makeTableCell(formattedVolume);
   tableRow.appendChild(volumeCell);
 
-  let change = asset.changePercent24Hr;
-  let formattedChange = formatNumber(change).slice(1) + '%';
+  let change = Number(asset.changePercent24Hr);
+  let formattedChange = toPercentage(change);
   let changeCell = makeTableCell(formattedChange);
+  changeCell.style.textAlign = 'right';
   tableRow.appendChild(changeCell);
 
   tBody.appendChild(tableRow);
 }
 //===============adding picture beside the name of cryptocurrency============
-let nameOfCrypto = '';
-let basePicURL = `https://assets.coincap.io/assets/icons/${nameOfCrypto}@2x.png`;
+
+function renderCryptoImg(parent, coinName) {
+  const img = document.createElement('img');
+  let imgUrl = `https://assets.coincap.io/assets/icons/${coinName.toLowerCase()}@2x.png`;
+  img.src = imgUrl;
+  img.width = 30;
+  parent.appendChild(img);
+}

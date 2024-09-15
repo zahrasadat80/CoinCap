@@ -37,7 +37,6 @@ picture,
 video,
 canvas,
 svg {
-  /* display: block; */
   max-width: 100%;
 }
 
@@ -91,7 +90,9 @@ header {
 }
 nav {
   position: sticky;
-  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
 }
 .nav__list {
   display: flex;
