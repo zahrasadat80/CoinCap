@@ -1,10 +1,16 @@
+//======================================all things for making table===========================
+
 let assetsUrl = 'https://api.coincap.io/v2/assets';
+const tBody = document.querySelector('tbody');
+
 //step one fetch data
 async function getAssetsList() {
   let response = await fetch(assetsUrl);
   let body = await response.json();
   return body.data;
 }
+getAssetItem();
+
 //step two loop over list
 async function getAssetItem() {
   let list = await getAssetsList();
@@ -12,16 +18,31 @@ async function getAssetItem() {
     renderRows(item);
   }
 }
-
+//function for make cells of table
 function makeTableCell(data) {
   const tableCell = document.createElement('td');
   tableCell.textContent = data;
   return tableCell;
 }
 
-const tBody = document.querySelector('tbody');
+//function for formatting numbers in the list
 
-getAssetItem();
+function formatNumber(price) {
+  let number = +price;
+
+  // Handle large numbers first (thousands, millions, billions, trillions)
+  if (number >= 1e12) {
+    return `$${(number / 1e12).toFixed(2)}t`; // Trillions
+  } else if (number >= 1e9) {
+    return `$${(number / 1e9).toFixed(2)}b`; // Billions
+  } else if (number >= 1e6) {
+    return `$${(number / 1e6).toFixed(2)}m`; // Millions
+  }
+
+  // If the number is less than 1,000, format it as a regular currency
+  return number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+}
+
 //step three assign each property to a var
 function renderRows(asset) {
   const tableRow = document.createElement('tr');
@@ -35,38 +56,38 @@ function renderRows(asset) {
   tableRow.appendChild(nameCell);
 
   let price = asset.priceUsd;
-  let priceCell = makeTableCell(price);
+  let formattedPrice = formatNumber(price);
+  let priceCell = makeTableCell(formattedPrice);
   tableRow.appendChild(priceCell);
+  console.log(typeof formattedPrice);
 
   let MarketCap = asset.marketCapUsd;
-  let MarketCapCell = makeTableCell(MarketCap);
+  let formattedMarketCap = formatNumber(MarketCap);
+  let MarketCapCell = makeTableCell(formattedMarketCap);
   tableRow.appendChild(MarketCapCell);
 
   let vWAP = asset.vwap24Hr;
-  let vWAPCell = makeTableCell(vWAP);
+  let formattedVWAP = formatNumber(vWAP);
+  let vWAPCell = makeTableCell(formattedVWAP);
   tableRow.appendChild(vWAPCell);
 
   let supply = asset.supply;
-  let supplyCell = makeTableCell(supply);
+  let formattedSupply = formatNumber(supply).slice(1); //for removing dollar sign
+  let supplyCell = makeTableCell(formattedSupply);
   tableRow.appendChild(supplyCell);
 
   let volume = asset.volumeUsd24Hr;
-  let volumeCell = makeTableCell(volume);
+  let formattedVolume = formatNumber(volume);
+  let volumeCell = makeTableCell(formattedVolume);
   tableRow.appendChild(volumeCell);
 
   let change = asset.changePercent24Hr;
-  let changeCell = makeTableCell(change);
+  let formattedChange = formatNumber(change).slice(1) + '%';
+  let changeCell = makeTableCell(formattedChange);
   tableRow.appendChild(changeCell);
 
   tBody.appendChild(tableRow);
 }
-
-// function makeTableRow() {
-//   const tableRow = document.createElement('tr');
-//   const tableCell = document.createElement('td');
-//   tableCell.textContent = 2;
-//   tableRow.appendChild(tableCell);
-//   tBody.appendChild(tableRow);
-// }
-
-makeTableRow();
+//===============adding picture beside the name of cryptocurrency============
+let nameOfCrypto = '';
+let basePicURL = `https://assets.coincap.io/assets/icons/${nameOfCrypto}@2x.png`;

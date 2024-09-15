@@ -135,14 +135,27 @@ table {
   position: relative;
   background-color: white;
   top: -200px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 15px -3px;
+  border-radius: 10px;
 }
 td,
 th {
-  border: 1px black solid;
   padding: 11.7px 9.9px;
   font-weight: 400;
+  padding: 11px;
 }
 th {
   color: var(--lighter-gray);
   font-size: var(--table-header-font-size);
+  background-color: rgb(250, 250, 250);
+  text-align: right;
+}
+.th-name {
+  text-align: left;
+}
+td {
+  border-top: 1px #cbd5e1 solid;
+}
+td:first-child {
+  text-align: center;
 }
