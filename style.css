@@ -203,3 +203,17 @@ footer i {
 footer a:hover {
   opacity: 1;
 }
+
+.circle {
+  background-color: var(--green-color);
+  width: 14px;
+  height: 14px;
+  border-radius: 10px;
+}
+.socket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 43px;
+  border-top: 1px #cbd5e1 solid;
+}

@@ -1,7 +1,7 @@
 import { createNameCell } from './renderNameCell.js';
 import { formatNumber, toPercentage } from './format-prices.js';
 
-const tBody = document.querySelector('tbody');
+export const tBody = document.querySelector('tbody');
 
 //create table cell
 export function makeTableCell(data, textAlign = 'right') {
